@@ -37,3 +37,11 @@ delete_transaction:
 add_beneficiary:
     path : /account/addBeneficiary/{id}
     controller: App\Controller\AccountController::addBeneficiary
+
+delete_beneficiary:
+    path : /account/deleteBeneficiary/{id}/{ben_id}
+    controller: App\Controller\AccountController::deleteBeneficiary
+
+pay_beneficiary:
+    path : /transaction/payBeneficiary/{id}/{ben_id}
+    controller: App\Controller\TransactionController::payBeneficiary

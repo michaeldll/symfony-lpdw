@@ -64,10 +64,10 @@ class Account extends \App\Entity\Account implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'name', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'balance', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'departureTransactions', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'arrivalTransactions'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'name', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'balance', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'departureTransactions', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'arrivalTransactions', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'beneficiary'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'name', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'balance', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'departureTransactions', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'arrivalTransactions'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'name', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'balance', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'departureTransactions', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'arrivalTransactions', '' . "\0" . 'App\\Entity\\Account' . "\0" . 'beneficiary'];
     }
 
     /**
@@ -318,6 +318,39 @@ class Account extends \App\Entity\Account implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeArrivalTransaction', [$arrivalTransaction]);
 
         return parent::removeArrivalTransaction($arrivalTransaction);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBeneficiary(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBeneficiary', []);
+
+        return parent::getBeneficiary();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addBeneficiary(\App\Entity\Account $beneficiary): \App\Entity\Account
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addBeneficiary', [$beneficiary]);
+
+        return parent::addBeneficiary($beneficiary);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeBeneficiary(\App\Entity\Account $beneficiary): \App\Entity\Account
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeBeneficiary', [$beneficiary]);
+
+        return parent::removeBeneficiary($beneficiary);
     }
 
 }

@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Form\AccountCreateType;
+use App\Form\BeneficiaryCreateType;
 use App\Repository\TransactionRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Account;
@@ -81,7 +83,7 @@ class AccountController extends AbstractController
     {
         $em->remove($account);
         $em->flush();
-        return new Response("ok deleted");
+        return $this->redirectToRoute('list_accounts');
     }
 
     public function showTransactions(Account $account, AccountRepository $accountRepository, TransactionRepository $transactionRepository)
@@ -98,6 +100,51 @@ class AccountController extends AbstractController
         ]);
     }
 
+    public function addBeneficiary(Account $account, Request $request,  EntityManagerInterface $em)
+    {
+        $form = $this->createForm(BeneficiaryCreateType::class, $account);
 
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $beneficiaries = $form->get("beneficiary")->getData();
+            foreach ($beneficiaries as $ben){
+                $account->addBeneficiary($ben);
+            }
+
+            $em->flush();
+
+            return $this->redirectToRoute('list_accounts');
+        }
+
+        return $this->render("account/addBeneficiary.html.twig", [
+            'createForm' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Entity("Account", expr="repository.find(ben_id)")
+     * @param Account $account
+     * @param Account $ben_id
+     * @param EntityManagerInterface $em
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function deleteBeneficiary(Account $account, Account $ben_id, EntityManagerInterface $em)
+    {
+        $account->removeBeneficiary($ben_id);
+        $em->flush();
+        return $this->redirectToRoute('list_accounts');
+
+        /*
+        TEST
+        $qb = $em->createQueryBuilder();
+        $qb->delete($account)
+            ->from('Account', '$account')
+            ->where('beneficiary = ?1');
+        $em->flush();
+        return $this->redirectToRoute('list_accounts');
+
+         */
+    }
 }

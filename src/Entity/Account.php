@@ -38,10 +38,16 @@ class Account
      */
     private $arrivalTransactions;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Account")
+     */
+    private $beneficiary;
+
     public function __construct()
     {
         $this->departureTransactions = new ArrayCollection();
         $this->arrivalTransactions = new ArrayCollection();
+        $this->beneficiary = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,4 +152,32 @@ class Account
 
         return $this;
     }
+
+    /**
+     * @return Collection|Account[]
+     */
+    public function getBeneficiary(): Collection
+    {
+        return $this->beneficiary;
+    }
+
+    public function addBeneficiary(Account $beneficiary): self
+    {
+        if (!$this->beneficiary->contains($beneficiary)) {
+            $this->beneficiary[] = $beneficiary;
+        }
+
+        return $this;
+    }
+
+    public function removeBeneficiary(Account $beneficiary): self
+    {
+        if ($this->beneficiary->contains($beneficiary)) {
+            $this->beneficiary->removeElement($beneficiary);
+        }
+
+        return $this;
+    }
+
+
 }

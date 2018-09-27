@@ -44,6 +44,8 @@ class srcDevDebugProjectContainerUrlGenerator extends Symfony\Component\Routing\
         'list_transactions' => array(array(), array('_controller' => 'App\\Controller\\TransactionController::list'), array(), array(array('text', '/transactions')), array(), array()),
         'delete_transaction' => array(array('id'), array('_controller' => 'App\\Controller\\TransactionController::delete'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/transaction/delete')), array(), array()),
         'add_beneficiary' => array(array('id'), array('_controller' => 'App\\Controller\\AccountController::addBeneficiary'), array(), array(array('variable', '/', '[^/]++', 'id'), array('text', '/account/addBeneficiary')), array(), array()),
+        'delete_beneficiary' => array(array('id', 'ben_id'), array('_controller' => 'App\\Controller\\AccountController::deleteBeneficiary'), array(), array(array('variable', '/', '[^/]++', 'ben_id'), array('variable', '/', '[^/]++', 'id'), array('text', '/account/deleteBeneficiary')), array(), array()),
+        'pay_beneficiary' => array(array('id', 'ben_id'), array('_controller' => 'App\\Controller\\TransactionController::payBeneficiary'), array(), array(array('variable', '/', '[^/]++', 'ben_id'), array('variable', '/', '[^/]++', 'id'), array('text', '/transaction/payBeneficiary')), array(), array()),
     );
         }
     }

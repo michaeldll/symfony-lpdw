@@ -117,12 +117,18 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         .')'
                     .')'
                     .'|/account/(?'
-                        .'|delete/([^/]++)(*:196)'
-                        .'|modify/([^/]++)(*:219)'
-                        .'|showtransactions/([^/]++)(*:252)'
-                        .'|addBeneficiary/([^/]++)(*:283)'
+                        .'|delete(?'
+                            .'|/([^/]++)(*:199)'
+                            .'|Beneficiary/([^/]++)/([^/]++)(*:236)'
+                        .')'
+                        .'|modify/([^/]++)(*:260)'
+                        .'|showtransactions/([^/]++)(*:293)'
+                        .'|addBeneficiary/([^/]++)(*:324)'
                     .')'
-                    .'|/transaction/delete/([^/]++)(*:320)'
+                    .'|/transaction/(?'
+                        .'|delete/([^/]++)(*:364)'
+                        .'|payBeneficiary/([^/]++)/([^/]++)(*:404)'
+                    .')'
                 .')$}sD',
         );
 
@@ -138,11 +144,13 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                             136 => array(array('_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'), array('token'), null, null),
                             149 => array(array('_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'), array('token'), null, null),
                             159 => array(array('_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'), array('token'), null, null),
-                            196 => array(array('_route' => 'delete_account', '_controller' => 'App\\Controller\\AccountController::delete'), array('id'), null, null),
-                            219 => array(array('_route' => 'modify_account', '_controller' => 'App\\Controller\\AccountController::modify'), array('id'), null, null),
-                            252 => array(array('_route' => 'showTransactions_account', '_controller' => 'App\\Controller\\AccountController::showTransactions'), array('id'), null, null),
-                            283 => array(array('_route' => 'add_beneficiary', '_controller' => 'App\\Controller\\AccountController::addBeneficiary'), array('id'), null, null),
-                            320 => array(array('_route' => 'delete_transaction', '_controller' => 'App\\Controller\\TransactionController::delete'), array('id'), null, null),
+                            199 => array(array('_route' => 'delete_account', '_controller' => 'App\\Controller\\AccountController::delete'), array('id'), null, null),
+                            236 => array(array('_route' => 'delete_beneficiary', '_controller' => 'App\\Controller\\AccountController::deleteBeneficiary'), array('id', 'ben_id'), null, null),
+                            260 => array(array('_route' => 'modify_account', '_controller' => 'App\\Controller\\AccountController::modify'), array('id'), null, null),
+                            293 => array(array('_route' => 'showTransactions_account', '_controller' => 'App\\Controller\\AccountController::showTransactions'), array('id'), null, null),
+                            324 => array(array('_route' => 'add_beneficiary', '_controller' => 'App\\Controller\\AccountController::addBeneficiary'), array('id'), null, null),
+                            364 => array(array('_route' => 'delete_transaction', '_controller' => 'App\\Controller\\TransactionController::delete'), array('id'), null, null),
+                            404 => array(array('_route' => 'pay_beneficiary', '_controller' => 'App\\Controller\\TransactionController::payBeneficiary'), array('id', 'ben_id'), null, null),
                         );
 
                         list($ret, $vars, $requiredMethods, $requiredSchemes) = $routes[$m];
@@ -168,7 +176,7 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $ret;
                 }
 
-                if (320 === $m) {
+                if (404 === $m) {
                     break;
                 }
                 $regex = substr_replace($regex, 'F', $m - $offset, 1 + strlen($m));

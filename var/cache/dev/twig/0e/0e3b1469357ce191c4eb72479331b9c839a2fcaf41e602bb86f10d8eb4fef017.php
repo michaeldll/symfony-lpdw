@@ -72,59 +72,114 @@ class __TwigTemplate_3d020ed4719c607822f07ddb28d868d86e8859890826344e57a9f7483b6
         echo "    <div class=\"row\">
         <div class=\"col-sm-12 align-content-center text-center\">
             <div class=\"h1\">Accounts</div>
+            <div class=\"h1\">";
+        if ($this->env->isDebug()) {
+            // line 9
+            \Symfony\Component\VarDumper\VarDumper::dump("test");
+        }
+        echo "</div>
+            <div class=\"mb-5\"></div>
         </div>
     </div>
     ";
-        // line 11
+        // line 13
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["accounts"]) || array_key_exists("accounts", $context) ? $context["accounts"] : (function () { throw new Twig_Error_Runtime('Variable "accounts" does not exist.', 11, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["accounts"]) || array_key_exists("accounts", $context) ? $context["accounts"] : (function () { throw new Twig_Error_Runtime('Variable "accounts" does not exist.', 13, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["account"]) {
-            // line 12
-            echo "        <ul>
-            <li>Compte numéro : ";
-            // line 13
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["account"], "id", array()), "html", null, true);
-            echo "</li>
-            <li>Nom : ";
             // line 14
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["account"], "name", array()), "html", null, true);
-            echo "</li>
-            <li>";
-            // line 15
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["account"], "balance", array()), "html", null, true);
-            echo " €</li>
-            ";
-            // line 16
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\DumpExtension']->dump($this->env, $context, $context["account"]);
-            echo "
-            <a href=\" ";
+            echo "        <div class=\"row justify-content-center\">
+            <div class=\"card\">
+                <div class=\"card-header text-center\">
+                    <h3>";
             // line 17
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["account"], "name", array()), "html", null, true);
+            echo "</h3>
+                </div>
+                <div class=\"card-body\">
+
+                        <strong>compte numéro : </strong>";
+            // line 21
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["account"], "id", array()), "html", null, true);
+            echo "<br>
+                        <div class=\"mt-2\"></div>
+                        <strong>solde : </strong>";
+            // line 23
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["account"], "balance", array()), "html", null, true);
+            echo " €<br>
+                        <div class=\"mt-2\"></div>
+                        <strong>bénéficiaires :</strong>
+                        <div class=\"mt-3\"></div>
+                        <table class=\"table\">
+                        ";
+            // line 28
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["account"], "beneficiary", array()));
+            foreach ($context['_seq'] as $context["_key"] => $context["beneficiaire"]) {
+                // line 29
+                echo "                                <tr>
+                                    <td>
+                                        nom :
+                                    </td>
+                                    <td>
+                                        ";
+                // line 34
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["beneficiaire"], "name", array()), "html", null, true);
+                echo "
+                                    </td>
+                                    <td>
+                                        <a href=\" ";
+                // line 37
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_beneficiary", array("id" => twig_get_attribute($this->env, $this->source, $context["account"], "id", array()), "ben_id" => twig_get_attribute($this->env, $this->source, $context["beneficiaire"], "id", array()))), "html", null, true);
+                echo " \"><button class=\"btn btn-danger\">delete</button></a>
+                                    </td>
+                                    <td>
+                                        <a href=\" ";
+                // line 40
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pay_beneficiary", array("id" => twig_get_attribute($this->env, $this->source, $context["account"], "id", array()), "ben_id" => twig_get_attribute($this->env, $this->source, $context["beneficiaire"], "id", array()))), "html", null, true);
+                echo " \"><button class=\"btn btn-primary\">pay beneficiary</button></a>
+                                    </td>
+                                </tr>
+                        ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['beneficiaire'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 44
+            echo "                        </table>
+                        <a href=\" ";
+            // line 45
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_account", array("id" => twig_get_attribute($this->env, $this->source, $context["account"], "id", array()))), "html", null, true);
             echo " \"><button class=\"btn btn-danger\">delete</button></a>
-            <a href=\" ";
-            // line 18
+                        <a href=\" ";
+            // line 46
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("modify_account", array("id" => twig_get_attribute($this->env, $this->source, $context["account"], "id", array()))), "html", null, true);
             echo " \"><button class=\"btn btn-secondary\">modify</button></a>
-            <a href=\" ";
-            // line 19
+                        <a href=\" ";
+            // line 47
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_beneficiary", array("id" => twig_get_attribute($this->env, $this->source, $context["account"], "id", array()))), "html", null, true);
             echo " \"><button class=\"btn btn-light\">add beneficiary</button></a>
-            <a href=\" ";
-            // line 20
+                        <a href=\" ";
+            // line 48
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("showTransactions_account", array("id" => twig_get_attribute($this->env, $this->source, $context["account"], "id", array()))), "html", null, true);
             echo " \"><button class=\"btn btn-light\">show transactions</button></a>
-        </ul>
+
+                </div>
+            </div>
+
+        </div>
+        <div class=\"mt-4\"></div>
+
     ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['account'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 23
+        // line 57
         echo "
     <div class=\"row\">
         <div class=\"col-sm-12 align-content-center text-center\">
             <a href=\" ";
-        // line 26
+        // line 60
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("create_account");
         echo " \"><button class=\"btn btn-primary\">add account</button></a>
         </div>
@@ -151,7 +206,7 @@ class __TwigTemplate_3d020ed4719c607822f07ddb28d868d86e8859890826344e57a9f7483b6
 
     public function getDebugInfo()
     {
-        return array (  128 => 26,  123 => 23,  114 => 20,  110 => 19,  106 => 18,  102 => 17,  98 => 16,  94 => 15,  90 => 14,  86 => 13,  83 => 12,  79 => 11,  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
+        return array (  183 => 60,  178 => 57,  163 => 48,  159 => 47,  155 => 46,  151 => 45,  148 => 44,  138 => 40,  132 => 37,  126 => 34,  119 => 29,  115 => 28,  107 => 23,  102 => 21,  95 => 17,  90 => 14,  86 => 13,  78 => 9,  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -164,19 +219,53 @@ class __TwigTemplate_3d020ed4719c607822f07ddb28d868d86e8859890826344e57a9f7483b6
     <div class=\"row\">
         <div class=\"col-sm-12 align-content-center text-center\">
             <div class=\"h1\">Accounts</div>
+            <div class=\"h1\">{% dump('test') %}</div>
+            <div class=\"mb-5\"></div>
         </div>
     </div>
     {% for account in accounts %}
-        <ul>
-            <li>Compte numéro : {{ account.id }}</li>
-            <li>Nom : {{ account.name }}</li>
-            <li>{{ account.balance }} €</li>
-            {{ dump(account) }}
-            <a href=\" {{ path('delete_account', {'id': account.id}) }} \"><button class=\"btn btn-danger\">delete</button></a>
-            <a href=\" {{ path('modify_account', {'id': account.id}) }} \"><button class=\"btn btn-secondary\">modify</button></a>
-            <a href=\" {{ path('add_beneficiary', {'id': account.id}) }} \"><button class=\"btn btn-light\">add beneficiary</button></a>
-            <a href=\" {{ path('showTransactions_account', {'id': account.id}) }} \"><button class=\"btn btn-light\">show transactions</button></a>
-        </ul>
+        <div class=\"row justify-content-center\">
+            <div class=\"card\">
+                <div class=\"card-header text-center\">
+                    <h3>{{ account.name }}</h3>
+                </div>
+                <div class=\"card-body\">
+
+                        <strong>compte numéro : </strong>{{ account.id }}<br>
+                        <div class=\"mt-2\"></div>
+                        <strong>solde : </strong>{{ account.balance }} €<br>
+                        <div class=\"mt-2\"></div>
+                        <strong>bénéficiaires :</strong>
+                        <div class=\"mt-3\"></div>
+                        <table class=\"table\">
+                        {% for beneficiaire in account.beneficiary %}
+                                <tr>
+                                    <td>
+                                        nom :
+                                    </td>
+                                    <td>
+                                        {{ beneficiaire.name }}
+                                    </td>
+                                    <td>
+                                        <a href=\" {{ path('delete_beneficiary', {'id': account.id, 'ben_id': beneficiaire.id}) }} \"><button class=\"btn btn-danger\">delete</button></a>
+                                    </td>
+                                    <td>
+                                        <a href=\" {{ path('pay_beneficiary', {'id': account.id, 'ben_id': beneficiaire.id}) }} \"><button class=\"btn btn-primary\">pay beneficiary</button></a>
+                                    </td>
+                                </tr>
+                        {% endfor %}
+                        </table>
+                        <a href=\" {{ path('delete_account', {'id': account.id}) }} \"><button class=\"btn btn-danger\">delete</button></a>
+                        <a href=\" {{ path('modify_account', {'id': account.id}) }} \"><button class=\"btn btn-secondary\">modify</button></a>
+                        <a href=\" {{ path('add_beneficiary', {'id': account.id}) }} \"><button class=\"btn btn-light\">add beneficiary</button></a>
+                        <a href=\" {{ path('showTransactions_account', {'id': account.id}) }} \"><button class=\"btn btn-light\">show transactions</button></a>
+
+                </div>
+            </div>
+
+        </div>
+        <div class=\"mt-4\"></div>
+
     {% endfor %}
 
     <div class=\"row\">

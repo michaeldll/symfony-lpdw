@@ -69,52 +69,69 @@ class __TwigTemplate_61e8419d3ce8da6e2348d180b0f9a62d9fa24aa3706226bda387220d3b7
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "    <div class=\"container\">
+        echo "
+    ";
+        // line 8
+        echo "
+    <div class=\"container\">
         <div class=\"row mb-5\">
             <div class=\"col-sm-12 align-content-center text-center\">
                 <div class=\"h1\">Transactions</div>
             </div>
         </div>
-        <div class=\"row\">
+
+
         ";
-        // line 13
+        // line 17
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["transactions"]) || array_key_exists("transactions", $context) ? $context["transactions"] : (function () { throw new Twig_Error_Runtime('Variable "transactions" does not exist.', 13, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["transactions"]) || array_key_exists("transactions", $context) ? $context["transactions"] : (function () { throw new Twig_Error_Runtime('Variable "transactions" does not exist.', 17, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["transaction"]) {
-            // line 14
-            echo "            <ul>
-                <li><strong>Transaction number : </strong> ";
-            // line 15
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["transaction"], "id", array()), "html", null, true);
-            echo "</li>
-                <li><strong>Transaction amount : </strong>";
-            // line 16
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["transaction"], "amount", array()), "html", null, true);
-            echo "</li>
-                <li><strong>transaction date : </strong>";
-            // line 17
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["transaction"], "date", array()), "Y-m-d h-m-s"), "html", null, true);
-            echo "</li>
-                <a href=\" ";
             // line 18
+            echo "            <div class=\"row justify-content-center\">
+                <div class=\"card\">
+                    <div class=\"card-header text-center\">
+                        <h3>transaction number : ";
+            // line 21
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["transaction"], "id", array()), "html", null, true);
+            echo "</h3>
+                    </div>
+                    <div class=\"card-body text-center\">
+                            <strong>transaction amount : </strong>";
+            // line 24
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["transaction"], "amount", array()), "html", null, true);
+            echo " <br>
+                            <strong>transaction date : </strong>";
+            // line 25
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["transaction"], "date", array()), "Y-m-d h-m-s"), "html", null, true);
+            echo " <br>
+                        <div class=\"mb-3\"></div>
+                        <div class=\"justify-content-center\">
+                            <a href=\" ";
+            // line 28
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_transaction", array("id" => twig_get_attribute($this->env, $this->source, $context["transaction"], "id", array()))), "html", null, true);
-            echo " \"><button class=\"btn btn-primary\">delete transaction</button></a>
-            </ul>
+            echo " \"><button class=\"btn btn-danger\">delete transaction</button></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class=\"mt-4\"></div>
+
         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['transaction'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 21
-        echo "        </div>
+        // line 37
+        echo "
     </div>
 
-    <div class=\"d-flex justify-content-center mt-4\">
-        <div class=\"row\">
+    <div class=\"mt-4\">
+        <div class=\"row justify-content-center \">
             <div><a href=\" ";
-        // line 26
+        // line 42
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("create_transaction");
-        echo " \"><button class=\"btn btn-primary mr-5\">Create transaction</button></a></div>
+        echo " \"><button class=\"btn btn-primary mr-5\">create transaction</button></a></div>
         </div>
         <div class=\"mt-3\"></div>
     </div>
@@ -140,7 +157,7 @@ class __TwigTemplate_61e8419d3ce8da6e2348d180b0f9a62d9fa24aa3706226bda387220d3b7
 
     public function getDebugInfo()
     {
-        return array (  116 => 26,  109 => 21,  100 => 18,  96 => 17,  92 => 16,  88 => 15,  85 => 14,  81 => 13,  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
+        return array (  133 => 42,  126 => 37,  111 => 28,  105 => 25,  101 => 24,  95 => 21,  90 => 18,  86 => 17,  75 => 8,  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -150,27 +167,43 @@ class __TwigTemplate_61e8419d3ce8da6e2348d180b0f9a62d9fa24aa3706226bda387220d3b7
 {% block title %}List Transactions{% endblock %}
 
 {% block body %}
+
+    {# Faire une transaction depuis mon compte vers celui d’un de mes bénéficiaire #}
+
     <div class=\"container\">
         <div class=\"row mb-5\">
             <div class=\"col-sm-12 align-content-center text-center\">
                 <div class=\"h1\">Transactions</div>
             </div>
         </div>
-        <div class=\"row\">
+
+
         {% for transaction in transactions %}
-            <ul>
-                <li><strong>Transaction number : </strong> {{ transaction.id }}</li>
-                <li><strong>Transaction amount : </strong>{{ transaction.amount }}</li>
-                <li><strong>transaction date : </strong>{{ transaction.date|date('Y-m-d h-m-s') }}</li>
-                <a href=\" {{ path('delete_transaction', {'id': transaction.id}) }} \"><button class=\"btn btn-primary\">delete transaction</button></a>
-            </ul>
+            <div class=\"row justify-content-center\">
+                <div class=\"card\">
+                    <div class=\"card-header text-center\">
+                        <h3>transaction number : {{ transaction.id }}</h3>
+                    </div>
+                    <div class=\"card-body text-center\">
+                            <strong>transaction amount : </strong>{{ transaction.amount }} <br>
+                            <strong>transaction date : </strong>{{ transaction.date|date('Y-m-d h-m-s') }} <br>
+                        <div class=\"mb-3\"></div>
+                        <div class=\"justify-content-center\">
+                            <a href=\" {{ path('delete_transaction', {'id': transaction.id}) }} \"><button class=\"btn btn-danger\">delete transaction</button></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class=\"mt-4\"></div>
+
         {% endfor %}
-        </div>
+
     </div>
 
-    <div class=\"d-flex justify-content-center mt-4\">
-        <div class=\"row\">
-            <div><a href=\" {{ path('create_transaction') }} \"><button class=\"btn btn-primary mr-5\">Create transaction</button></a></div>
+    <div class=\"mt-4\">
+        <div class=\"row justify-content-center \">
+            <div><a href=\" {{ path('create_transaction') }} \"><button class=\"btn btn-primary mr-5\">create transaction</button></a></div>
         </div>
         <div class=\"mt-3\"></div>
     </div>

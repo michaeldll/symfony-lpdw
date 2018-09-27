@@ -6,6 +6,7 @@ use App\Form\TransactionCreateType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Transaction;
+use App\Entity\Account;
 use App\Repository\TransactionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -52,5 +53,29 @@ class TransactionController extends AbstractController
         $em->remove($transaction);
         $em->flush();
         return new Response("ok deleted");
+    }
+    public function payBeneficiary(Request $request, Account $account, Account $beneficiary, EntityManagerInterface $em)
+    {
+        $transaction = new Transaction();
+        $transaction->setDepartureAccount($account);
+        $transaction->setArrivalAccount($beneficiary);
+        $form = $this->createForm(TransactionCreateType::class, $transaction);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $transaction = $form->getData();
+            $em ->persist($transaction);
+            $em->flush();
+
+            return $this->redirectToRoute('list_accounts');
+        }
+
+        return $this->render("transaction/payBeneficiary.html.twig", [
+            'createForm' => $form->createView(),
+            'payingFrom' => $account,
+            'payingTo' => $beneficiary
+        ]);
     }
 }

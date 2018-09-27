@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pay Beneficiary{% endblock %}
+
+{% block body %}
+    <h1>Pay Beneficiary</h1>
+    <div class="mb-5"></div>
+    {{ form_start(createForm) }}
+    {{ form_row(createForm.amount, {'label': 'Montant'}) }}
+    {{ form_row(createForm.date, {'label': 'Date'}) }}
+
+    <div class="mb-3"></div>
+    <input type="submit" value="ajouter">
+    {{ form_end(createForm, {'render_rest': false}) }}
+{% endblock %}
