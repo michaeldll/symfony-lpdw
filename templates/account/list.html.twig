@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List Account{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12 align-content-center text-center">
+            <div class="h1">Accounts</div>
+        </div>
+    </div>
+    {% for account in accounts %}
+        <ul>
+            <li>Compte numéro : {{ account.id }}</li>
+            <li>Nom : {{ account.name }}</li>
+            <li>{{ account.balance }} €</li>
+            {{ dump(account) }}
+            <a href=" {{ path('delete_account', {'id': account.id}) }} "><button class="btn btn-danger">delete</button></a>
+            <a href=" {{ path('modify_account', {'id': account.id}) }} "><button class="btn btn-secondary">modify</button></a>
+            <a href=" {{ path('add_beneficiary', {'id': account.id}) }} "><button class="btn btn-light">add beneficiary</button></a>
+            <a href=" {{ path('showTransactions_account', {'id': account.id}) }} "><button class="btn btn-light">show transactions</button></a>
+        </ul>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-sm-12 align-content-center text-center">
+            <a href=" {{ path('create_account') }} "><button class="btn btn-primary">add account</button></a>
+        </div>
+    </div>
+
+{% endblock %}

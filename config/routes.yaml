@@ -1,0 +1,39 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+create_account:
+    path : /account/create
+    controller: App\Controller\AccountController::create
+
+list_accounts:
+    path : /accounts
+    controller: App\Controller\AccountController::list
+
+delete_account:
+    path : /account/delete/{id}
+    controller: App\Controller\AccountController::delete
+
+modify_account:
+    path : /account/modify/{id}
+    controller: App\Controller\AccountController::modify
+
+showTransactions_account:
+    path : /account/showtransactions/{id}
+    controller: App\Controller\AccountController::showTransactions
+
+create_transaction:
+    path : /transaction/create
+    controller: App\Controller\TransactionController::create
+
+list_transactions:
+    path : /transactions
+    controller: App\Controller\TransactionController::list
+
+delete_transaction:
+    path : /transaction/delete/{id}
+    controller: App\Controller\TransactionController::delete
+
+add_beneficiary:
+    path : /account/addBeneficiary/{id}
+    controller: App\Controller\AccountController::addBeneficiary

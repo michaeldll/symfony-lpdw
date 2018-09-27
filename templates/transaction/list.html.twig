@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List Transactions{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-sm-12 align-content-center text-center">
+                <div class="h1">Transactions</div>
+            </div>
+        </div>
+        <div class="row">
+        {% for transaction in transactions %}
+            <ul>
+                <li><strong>Transaction number : </strong> {{ transaction.id }}</li>
+                <li><strong>Transaction amount : </strong>{{ transaction.amount }}</li>
+                <li><strong>transaction date : </strong>{{ transaction.date|date('Y-m-d h-m-s') }}</li>
+                <a href=" {{ path('delete_transaction', {'id': transaction.id}) }} "><button class="btn btn-primary">delete transaction</button></a>
+            </ul>
+        {% endfor %}
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-4">
+        <div class="row">
+            <div><a href=" {{ path('create_transaction') }} "><button class="btn btn-primary mr-5">Create transaction</button></a></div>
+        </div>
+        <div class="mt-3"></div>
+    </div>
+
+{% endblock %}

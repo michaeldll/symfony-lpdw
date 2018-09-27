@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modify Account{% endblock %}
+
+{% block body %}
+    {{ form_start(createForm) }}
+    {{ form_widget(createForm) }}
+    <input type="submit" value="modifier">
+    {{ form_end(createForm) }}
+{% endblock %}

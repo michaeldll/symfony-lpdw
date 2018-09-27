@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List Transactions{% endblock %}
+
+{% block body %}
+    <h1>Montrer Transactions:</h1>
+
+        <div>
+            Voici l'account numero : <span>{{ accounts.id }}</span><br>
+            <span>Son nom est : {{ accounts.name }}</span><br>
+            <span>Elle a : {{ accounts.balance }} €</span><br>
+            <br>
+            Voici ses transactions :
+            <br>
+            <h2>DEPART</h2>
+            <table border="1" cellpadding="10px">
+                <tr>
+                    <th>ID</th>
+                    <th>Montant</th>
+                    <th>Date</th>
+                    <th>Compte d'arrivée</th>
+                </tr>
+            {% for transaction in accounts.departureTransactions %}
+                <tr>
+                    <td>{{ transaction.id }}</td>
+                    <td>{{ transaction.amount }}</td>
+                    <td>{{ transaction.date|date('Y-m-d h-m-s') }}</td>
+                    <td>{{ transaction.arrivalAccount.name }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+            <h2>ARRIVEE</h2>
+            <table border="1" cellpadding="10px">
+                <tr>
+                    <th>ID</th>
+                    <th>Montant</th>
+                    <th>Date</th>
+                    <th>Compte de départ</th>
+                </tr>
+            {% for transaction in accounts.arrivalTransactions %}
+                <tr>
+                    <td>{{ transaction.id }}</td>
+                    <td>{{ transaction.amount }}</td>
+                    <td>{{ transaction.date|date('Y-m-d h-m-s') }}</td>
+                    <td>{{ transaction.arrivalAccount.name }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+
+    <div>
+        <br>
+        <br>
+        <a href="{{ path('list_accounts') }}"><button>Retour</button></a>
+    </div>
+
+{% endblock %}
