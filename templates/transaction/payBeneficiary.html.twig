@@ -4,10 +4,14 @@
 
 {% block body %}
     <h1>Pay Beneficiary</h1>
+    {{ dump(payingTo) }}
+    {{ dump(payingFrom) }}
     <div class="mb-5"></div>
     {{ form_start(createForm) }}
     {{ form_row(createForm.amount, {'label': 'Montant'}) }}
     {{ form_row(createForm.date, {'label': 'Date'}) }}
+
+
 
     <div class="mb-3"></div>
     <input type="submit" value="ajouter">

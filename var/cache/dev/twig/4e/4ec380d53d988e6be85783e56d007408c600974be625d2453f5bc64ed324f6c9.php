@@ -70,25 +70,35 @@ class __TwigTemplate_ca57856df5557b4092eac2fd2ebbc88c8975317e4da183ed3a15536bbe8
 
         // line 6
         echo "    <h1>Pay Beneficiary</h1>
-    <div class=\"mb-5\"></div>
+    ";
+        // line 7
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\DumpExtension']->dump($this->env, $context, (isset($context["payingTo"]) || array_key_exists("payingTo", $context) ? $context["payingTo"] : (function () { throw new Twig_Error_Runtime('Variable "payingTo" does not exist.', 7, $this->source); })()));
+        echo "
     ";
         // line 8
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["createForm"]) || array_key_exists("createForm", $context) ? $context["createForm"] : (function () { throw new Twig_Error_Runtime('Variable "createForm" does not exist.', 8, $this->source); })()), 'form_start');
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\DumpExtension']->dump($this->env, $context, (isset($context["payingFrom"]) || array_key_exists("payingFrom", $context) ? $context["payingFrom"] : (function () { throw new Twig_Error_Runtime('Variable "payingFrom" does not exist.', 8, $this->source); })()));
         echo "
-    ";
-        // line 9
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["createForm"]) || array_key_exists("createForm", $context) ? $context["createForm"] : (function () { throw new Twig_Error_Runtime('Variable "createForm" does not exist.', 9, $this->source); })()), "amount", array()), 'row', array("label" => "Montant"));
-        echo "
+    <div class=\"mb-5\"></div>
     ";
         // line 10
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["createForm"]) || array_key_exists("createForm", $context) ? $context["createForm"] : (function () { throw new Twig_Error_Runtime('Variable "createForm" does not exist.', 10, $this->source); })()), "date", array()), 'row', array("label" => "Date"));
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["createForm"]) || array_key_exists("createForm", $context) ? $context["createForm"] : (function () { throw new Twig_Error_Runtime('Variable "createForm" does not exist.', 10, $this->source); })()), 'form_start');
         echo "
-    
+    ";
+        // line 11
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["createForm"]) || array_key_exists("createForm", $context) ? $context["createForm"] : (function () { throw new Twig_Error_Runtime('Variable "createForm" does not exist.', 11, $this->source); })()), "amount", array()), 'row', array("label" => "Montant"));
+        echo "
+    ";
+        // line 12
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["createForm"]) || array_key_exists("createForm", $context) ? $context["createForm"] : (function () { throw new Twig_Error_Runtime('Variable "createForm" does not exist.', 12, $this->source); })()), "date", array()), 'row', array("label" => "Date"));
+        echo "
+
+
+
     <div class=\"mb-3\"></div>
     <input type=\"submit\" value=\"ajouter\">
     ";
-        // line 14
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["createForm"]) || array_key_exists("createForm", $context) ? $context["createForm"] : (function () { throw new Twig_Error_Runtime('Variable "createForm" does not exist.', 14, $this->source); })()), 'form_end', array("render_rest" => false));
+        // line 18
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["createForm"]) || array_key_exists("createForm", $context) ? $context["createForm"] : (function () { throw new Twig_Error_Runtime('Variable "createForm" does not exist.', 18, $this->source); })()), 'form_end', array("render_rest" => false));
         echo "
 ";
         
@@ -111,7 +121,7 @@ class __TwigTemplate_ca57856df5557b4092eac2fd2ebbc88c8975317e4da183ed3a15536bbe8
 
     public function getDebugInfo()
     {
-        return array (  91 => 14,  84 => 10,  80 => 9,  76 => 8,  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
+        return array (  101 => 18,  92 => 12,  88 => 11,  84 => 10,  79 => 8,  75 => 7,  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -122,11 +132,15 @@ class __TwigTemplate_ca57856df5557b4092eac2fd2ebbc88c8975317e4da183ed3a15536bbe8
 
 {% block body %}
     <h1>Pay Beneficiary</h1>
+    {{ dump(payingTo) }}
+    {{ dump(payingFrom) }}
     <div class=\"mb-5\"></div>
     {{ form_start(createForm) }}
     {{ form_row(createForm.amount, {'label': 'Montant'}) }}
     {{ form_row(createForm.date, {'label': 'Date'}) }}
-    
+
+
+
     <div class=\"mb-3\"></div>
     <input type=\"submit\" value=\"ajouter\">
     {{ form_end(createForm, {'render_rest': false}) }}

@@ -54,11 +54,15 @@ class TransactionController extends AbstractController
         $em->flush();
         return new Response("ok deleted");
     }
-    public function payBeneficiary(Request $request, Account $account, Account $beneficiary, EntityManagerInterface $em)
+
+    /**
+     * @Entity("Account", expr="repository.find(ben_id)")
+     */
+    public function payBeneficiary(Request $request, Account $account, Account $ben_id, EntityManagerInterface $em)
     {
         $transaction = new Transaction();
         $transaction->setDepartureAccount($account);
-        $transaction->setArrivalAccount($beneficiary);
+        $transaction->setArrivalAccount($ben_id);
         $form = $this->createForm(TransactionCreateType::class, $transaction);
 
         $form->handleRequest($request);
@@ -75,7 +79,7 @@ class TransactionController extends AbstractController
         return $this->render("transaction/payBeneficiary.html.twig", [
             'createForm' => $form->createView(),
             'payingFrom' => $account,
-            'payingTo' => $beneficiary
+            'payingTo' => $ben_id
         ]);
     }
 }

@@ -762,3 +762,11 @@ baf767,172.19.0.1,GET,http://symfony.localhost/accounts,1538058011,,200
 f336c5,172.19.0.1,GET,http://symfony.localhost/transactions,1538058154,,200
 0ae79a,172.19.0.1,GET,http://symfony.localhost/accounts,1538058157,,200
 b823ec,172.19.0.1,GET,http://symfony.localhost/transaction/payBeneficiary/7/8,1538058159,,200
+b7aaa8,172.19.0.1,GET,http://symfony.localhost/transaction/payBeneficiary/7/8,1538058310,,200
+90aa2a,172.19.0.1,GET,http://symfony.localhost/accounts,1538058314,,200
+f6123a,172.19.0.1,GET,http://symfony.localhost/transaction/payBeneficiary/8/7,1538058317,,200
+887b65,172.19.0.1,GET,http://symfony.localhost/transaction/payBeneficiary/8/7,1538058388,,200
+274900,172.19.0.1,GET,http://symfony.localhost/transaction/payBeneficiary/8/7,1538058402,,200
+320e5f,172.19.0.1,GET,http://symfony.localhost/robots.txt,1538058420,996494,200
+996494,172.19.0.1,GET,http://symfony.localhost/robots.txt,1538058420,,404
+4df9fd,172.19.0.1,GET,http://symfony.localhost/transaction/payBeneficiary/8/7,1538058420,,200
